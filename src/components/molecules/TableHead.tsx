@@ -4,8 +4,8 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 interface Props {
-  firstColumnName: string,
-  items: Array<string>,
+  firstColumnName: string;
+  items: string[];
 }
 
 const TableHeading: React.FC<Props> = ({ firstColumnName, items }) => {

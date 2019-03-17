@@ -5,7 +5,7 @@ import { InitFormValues } from '../components/templates/CreateMonthTemplate';
 
 export default withFormik<INewMonthFormProps, InitFormValues>({
   validationSchema: Yup.object().shape({
-    goal: Yup.string().required("Enter your goals name"),
+    goal: Yup.string().required('Enter your goals name'),
   }),
   mapPropsToValues: ({ goal }) => ({
     ...goal,

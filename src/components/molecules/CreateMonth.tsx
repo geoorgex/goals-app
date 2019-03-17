@@ -20,4 +20,3 @@ const CreateMonth = () => {
 };
 
 export default CreateMonth;
-

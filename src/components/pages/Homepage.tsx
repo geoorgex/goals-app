@@ -1,23 +1,29 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { day, getDays, getGoals, getMonth, getMonthCreated } from '../../modules/month/monthReducer';
+import {
+  Day,
+  getDays,
+  getGoals,
+  getMonth,
+  getMonthCreated,
+} from '../../modules/month/monthReducer';
 import NewMonthTemplate from '../templates/NewMonthTemplate';
 import { handleCheckboxChange } from '../../modules/month/actions';
 import { IState } from '../../redux/rootReducer';
 
 interface StateProps {
-  days: Array<day>,
-  goals: Array<string>,
-  isMonthCreated: boolean,
+  days: Day[];
+  goals: string[];
+  isMonthCreated: boolean;
 }
 
 interface DispatchProps {
-  handleCheckboxChange: (day: number, goal: string) => void
+  handleCheckboxChange: (day: number, goal: string) => void;
 }
 
 class Homepage extends React.Component<StateProps & DispatchProps> {
-  render() {
+  public render() {
     const { days, goals, isMonthCreated, handleCheckboxChange } = this.props;
 
     return (

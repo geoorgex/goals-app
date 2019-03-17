@@ -9,7 +9,7 @@ import { defaultTheme } from './utils/theme';
 const { store, persistor } = configureStore();
 
 class App extends React.Component {
-  render() {
+  public render() {
     return (
       <>
         <MuiThemeProvider theme={defaultTheme}>

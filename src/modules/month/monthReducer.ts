@@ -2,29 +2,29 @@ import { MonthAction } from './actions';
 import { IState } from '../../redux/rootReducer';
 const moment = require('moment');
 
-export interface monthState {
-  monthCreated: boolean,
-  goals: Array<string>,
-  days: Array<day>
+export interface MonthState {
+  monthCreated: boolean;
+  goals: string[];
+  days: Day[];
 }
 
-export interface day {
-  day: number,
-  goals: Array<goal>,
+export interface Day {
+  day: number;
+  goals: Goal[];
 }
 
-export interface goal {
-  goal: string,
-  done: boolean,
+export interface Goal {
+  goal: string;
+  done: boolean;
 }
 
-const initialState: monthState = {
+const initialState: MonthState = {
   monthCreated: false,
   goals: [],
   days: [],
 };
 
-const createDays = (goals: Array<string>) => {
+const createDays = (goals: string[]) => {
   const monthArr = Array.from(Array(moment().daysInMonth()));
 
   return monthArr.map((month, index) => {
@@ -82,8 +82,8 @@ const monthReducer = (state = initialState, action: MonthAction) => {
 };
 
 export const getMonth = (state: IState) => state.month;
-export const getDays = (month: monthState) => month.days;
-export const getGoals = (month: monthState) => month.goals;
-export const getMonthCreated = (month: monthState) => month.monthCreated;
+export const getDays = (month: MonthState) => month.days;
+export const getGoals = (month: MonthState) => month.goals;
+export const getMonthCreated = (month: MonthState) => month.monthCreated;
 
 export default monthReducer;

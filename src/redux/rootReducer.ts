@@ -1,12 +1,12 @@
 import { combineReducers, Reducer } from 'redux';
-import monthReducer, { monthState } from '../modules/month/monthReducer';
+import monthReducer, { MonthState } from '../modules/month/monthReducer';
 
 export interface IState {
-  month: monthState
+  month: MonthState;
 }
 
 const rootReducer: Reducer<IState> = combineReducers({
-  month: monthReducer
+  month: monthReducer,
 });
 
 export default rootReducer;

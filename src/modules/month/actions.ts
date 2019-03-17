@@ -1,8 +1,8 @@
 export type MonthAction =
-  | { type: 'CREATE_MONTH'; payload: Array<string> }
-  | { type: 'HANDLE_CHECKBOX_CHANGE'; payload: {day: number, goal: string} };
+  | { type: 'CREATE_MONTH'; payload: string[] }
+  | { type: 'HANDLE_CHECKBOX_CHANGE'; payload: { day: number; goal: string } };
 
-export const createMonth = (goals: Array<string>): MonthAction => ({
+export const createMonth = (goals: string[]): MonthAction => ({
   type: 'CREATE_MONTH',
   payload: goals,
 });

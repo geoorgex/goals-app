@@ -3,7 +3,7 @@ import CreateMonth from '../molecules/CreateMonth';
 import MonthTable from '../organisms/MonthTable';
 import Paper from '@material-ui/core/Paper';
 import { createStyles, withStyles } from '@material-ui/styles';
-import { day } from '../../modules/month/monthReducer';
+import { Day } from '../../modules/month/monthReducer';
 import { WithStyles } from '@material-ui/styles';
 
 const style = createStyles({
@@ -15,8 +15,8 @@ const style = createStyles({
 });
 
 interface INewProps {
-  days: Array<day>;
-  goals: Array<string>;
+  days: Day[];
+  goals: string[];
   isMonthCreated: boolean;
   handleCheckboxChange: (day: number, goal: string) => void;
 }

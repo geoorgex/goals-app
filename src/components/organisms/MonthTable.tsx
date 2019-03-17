@@ -6,11 +6,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import { createStyles, WithStyles, withStyles } from '@material-ui/styles';
 import Checkbox from '@material-ui/core/Checkbox';
-import { day, goal } from '../../modules/month/monthReducer';
-import { Theme } from '@material-ui/core';
+import { Day, Goal } from '../../modules/month/monthReducer';
 const moment = require('moment');
 
-const styles = (theme: Theme) =>
+const styles = () =>
   createStyles({
     root: {
       width: '100%',
@@ -24,8 +23,8 @@ const styles = (theme: Theme) =>
   });
 
 interface IProps {
-  days: Array<day>;
-  goals: Array<string>;
+  days: Day[];
+  goals: string[];
   handleCheckboxChange: (day: number, goal: string) => void;
 }
 
@@ -46,7 +45,7 @@ const MonthTable: React.FC<IProps & WithStyles<typeof styles>> = ({
     });
   };
 
-  const renderCells = (day: number, goals: Array<goal>) => {
+  const renderCells = (day: number, goals: Goal[]) => {
     return goals.map(({ goal, done }) => {
       return (
         <TableCell key={day + goal}>

@@ -11,24 +11,24 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-  createMonth: (goals: Array<string>) => void;
+  createMonth: (goals: string[]) => void;
 }
 
 interface IOwnState {
-  goals: Array<string>;
+  goals: string[];
 }
 
 class NewMonthPage extends React.Component<IStateProps & IDispatchProps, IOwnState> {
-  state = {
+  public state = {
     goals: [],
   };
 
-  componentDidUpdate(prevProps: IStateProps & IDispatchProps, prevState: IOwnState) {
+  public componentDidUpdate(prevProps: IStateProps & IDispatchProps, prevState: IOwnState) {
     if (this.props.isMonthCreated) {
       redirect('/');
     }
   }
-  render() {
+  public render() {
     const { createMonth } = this.props;
 
     return (
@@ -43,11 +43,11 @@ class NewMonthPage extends React.Component<IStateProps & IDispatchProps, IOwnSta
     );
   }
 
-  handleGoalAdd = (goal: string) => {
+  private handleGoalAdd = (goal: string) => {
     this.setState({ goals: [...this.state.goals, goal] });
   };
 
-  handleDelete = (goal: string) => () => {
+  private handleDelete = (goal: string) => {
     this.setState({ goals: this.state.goals.filter(goalName => goalName !== goal) });
   };
 }

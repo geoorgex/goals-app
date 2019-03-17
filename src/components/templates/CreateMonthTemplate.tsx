@@ -22,10 +22,10 @@ const styles = createStyles({
 });
 
 interface IProps {
-  goals: Array<string>;
+  goals: string[];
   handleGoalAdd: (goal: string) => void;
   handleDelete: (goal: string) => void;
-  createMonth: (goals: Array<string>) => void;
+  createMonth: (goals: string[]) => void;
 }
 
 export interface InitFormValues {
@@ -39,7 +39,6 @@ const CreateMonthTemplate: React.FC<IProps & WithStyles<typeof styles>> = ({
   createMonth,
   classes,
 }) => {
-
   const initValues: InitFormValues = {
     goal: '',
   };
