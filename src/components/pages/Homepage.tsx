@@ -1,12 +1,22 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
-import { getDays, getGoals, getMonth, getMonthCreated } from '../../modules/month/monthReducer';
+import { day, getDays, getGoals, getMonth, getMonthCreated } from '../../modules/month/monthReducer';
 import NewMonthTemplate from '../templates/NewMonthTemplate';
 import { handleCheckboxChange } from '../../modules/month/actions';
+import { IState } from '../../redux/rootReducer';
 
-class Homepage extends Component {
+interface StateProps {
+  days: Array<day>,
+  goals: Array<string>,
+  isMonthCreated: boolean,
+}
+
+interface DispatchProps {
+  handleCheckboxChange: (day: number, goal: string) => void
+}
+
+class Homepage extends React.Component<StateProps & DispatchProps> {
   render() {
     const { days, goals, isMonthCreated, handleCheckboxChange } = this.props;
 
@@ -23,7 +33,7 @@ class Homepage extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
   const month = getMonth(state);
 
   return {
@@ -35,13 +45,6 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   handleCheckboxChange,
-};
-
-Homepage.propTypes = {
-  days: PropTypes.array.isRequired,
-  goals: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isMonthCreated: PropTypes.bool.isRequired,
-  handleCheckboxChange: PropTypes.func.isRequired,
 };
 
 export default connect(

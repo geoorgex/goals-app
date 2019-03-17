@@ -1,8 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import Chip from '@material-ui/core/Chip';
 
-const GoalsList = ({ goals, handleDelete }) => {
+interface IProps {
+  goals: Array<string>,
+  handleDelete: (goal: string) => void
+}
+
+const GoalsList:React.FC<IProps> = ({ goals, handleDelete }) => {
   const renderGoals = () => {
     return goals.map(goal => {
       return (
@@ -10,7 +14,7 @@ const GoalsList = ({ goals, handleDelete }) => {
           color={'primary'}
           key={goal}
           label={goal}
-          onDelete={handleDelete(goal)}
+          onDelete={() => handleDelete(goal)}
           style={{ margin: '2px' }}
         />
       );
@@ -19,14 +23,9 @@ const GoalsList = ({ goals, handleDelete }) => {
 
   return (
     <div style={{ height: '100px' }}>
-      {goals.length > 0 ? renderGoals(goals) : 'There are none'}
+      {goals.length > 0 ? renderGoals() : 'There are none'}
     </div>
   );
-};
-
-GoalsList.propTypes = {
-  goals: PropTypes.arrayOf(PropTypes.string).isRequired,
-  handleDelete: PropTypes.func.isRequired,
 };
 
 export default GoalsList;

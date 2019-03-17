@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import './App.css';
 import AppRouter from './router/AppRouter';
 import { Provider } from 'react-redux';
@@ -8,7 +8,7 @@ import { defaultTheme } from './utils/theme';
 
 const { store, persistor } = configureStore();
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <>

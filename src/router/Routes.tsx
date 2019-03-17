@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Homepage from '../components/pages/Homepage';
 import NewMonthPage from '../components/pages/NewMonthPage';

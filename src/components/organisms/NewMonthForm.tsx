@@ -1,20 +1,19 @@
-import React from 'react';
+import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import newMonthEnhancer from '../../formik/newMonthEnhancer';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import { TextField } from '@material-ui/core';
-import { withStyles } from '@material-ui/styles';
-import * as PropTypes from 'prop-types';
+import { FormikProps } from 'formik';
+import { InitFormValues } from '../templates/CreateMonthTemplate';
 
-const styles = {
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-};
+export interface INewMonthFormProps {
+  goal: InitFormValues;
+  handleGoalAdd: (goal: string) => void;
+  handleCreateMonth: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+}
 
-const NewMonthForm = ({
+const NewMonthForm: React.FC<FormikProps<InitFormValues> & INewMonthFormProps> = ({
   values,
   touched,
   errors,
@@ -22,13 +21,12 @@ const NewMonthForm = ({
   handleBlur,
   handleSubmit,
   handleCreateMonth,
-  classes,
 }) => {
   return (
-    <form onSubmit={handleSubmit} className={classes.form}>
+    <form onSubmit={handleSubmit}>
       <FormControl>
         <TextField
-          error={errors.goal && touched.goal}
+          error={!!errors.goal && !!touched.goal}
           type={'text'}
           name={'goal'}
           label={'New goal'}
@@ -54,10 +52,4 @@ const NewMonthForm = ({
   );
 };
 
-NewMonthForm.propTypes = {
-  goal: PropTypes.object.isRequired,
-  handleCreateMonth: PropTypes.func.isRequired,
-  handleGoalAdd: PropTypes.func.isRequired,
-};
-
-export default withStyles(styles)(newMonthEnhancer(NewMonthForm));
+export default newMonthEnhancer(NewMonthForm);

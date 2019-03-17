@@ -1,14 +1,14 @@
-import React from 'react';
-import * as PropTypes from 'prop-types';
+import * as React from 'react';
 import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/styles';
+import { createStyles, withStyles } from '@material-ui/styles';
 
 import NewMonthForm from '../organisms/NewMonthForm';
 import GoalsList from '../organisms/GoalsList';
-import moment from 'moment';
 import Grid from '@material-ui/core/Grid';
+import { WithStyles } from '@material-ui/styles/withStyles';
+const moment = require('moment');
 
-const styles = {
+const styles = createStyles({
   root: {
     width: '95%',
     margin: 'auto',
@@ -19,10 +19,28 @@ const styles = {
     height: '100%',
     width: '100%',
   },
-};
+});
 
-const CreateMonthTemplate = ({ goals, handleGoalAdd, handleDelete, createMonth, classes }) => {
-  const initValues = {
+interface IProps {
+  goals: Array<string>;
+  handleGoalAdd: (goal: string) => void;
+  handleDelete: (goal: string) => void;
+  createMonth: (goals: Array<string>) => void;
+}
+
+export interface InitFormValues {
+  goal: string;
+}
+
+const CreateMonthTemplate: React.FC<IProps & WithStyles<typeof styles>> = ({
+  goals,
+  handleGoalAdd,
+  handleDelete,
+  createMonth,
+  classes,
+}) => {
+
+  const initValues: InitFormValues = {
     goal: '',
   };
 
@@ -41,7 +59,7 @@ const CreateMonthTemplate = ({ goals, handleGoalAdd, handleDelete, createMonth, 
       >
         <Grid item>Your goals for {moment().format('MMMM')}</Grid>
         <Grid item>
-          <GoalsList className={classes.list} goals={goals} handleDelete={handleDelete} />
+          <GoalsList goals={goals} handleDelete={handleDelete} />
         </Grid>
         <Grid item>
           <Paper>
@@ -55,13 +73,6 @@ const CreateMonthTemplate = ({ goals, handleGoalAdd, handleDelete, createMonth, 
       </Grid>
     </Paper>
   );
-};
-
-CreateMonthTemplate.propTypes = {
-  goals: PropTypes.arrayOf(PropTypes.string).isRequired,
-  handleDelete: PropTypes.func.isRequired,
-  handleGoalAdd: PropTypes.func.isRequired,
-  createMonth: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(CreateMonthTemplate);

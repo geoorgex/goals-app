@@ -6,8 +6,12 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@material-ui/styles": "^3.0.0-alpha.10",
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.11.3",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "@types/yup": "^0.26.12",
     "axios": "^0.18.0",
-    "emotion-theming": "^10.0.9",
     "eslint": "5.12.0",
     "eslint-config-react-app": "^3.0.8",
     "eslint-plugin-import": "2.x",
@@ -28,6 +32,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-persist": "^5.10.0",
     "redux-saga": "^1.0.2",
+    "typescript": "^3.3.3333",
     "yup": "^0.27.0"
   },
   "scripts": {
@@ -46,16 +51,9 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "lint-staged": {
-    "*.{js, jsx}": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "devDependencies": {
-    "babel-eslint": "9.x",
-    "eslint-plugin-flowtype": "2.x",
-    "eslint-plugin-jsx-a11y": "6.x",
-    "lint-staged": "^8.1.5"
+    "@types/history": "^4.7.2",
+    "@types/react-redux": "^7.0.3",
+    "@types/react-router-dom": "^4.3.1"
   }
 }

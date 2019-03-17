@@ -1,19 +1,33 @@
-import React from 'react';
+import * as React from 'react';
 import CreateMonth from '../molecules/CreateMonth';
-import * as PropTypes from 'prop-types';
 import MonthTable from '../organisms/MonthTable';
 import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/styles';
+import { createStyles, withStyles } from '@material-ui/styles';
+import { day } from '../../modules/month/monthReducer';
+import { WithStyles } from '@material-ui/styles';
 
-const style = {
+const style = createStyles({
   table: {
     width: '95%',
     margin: 'auto',
     marginTop: '100px',
   },
-};
+});
 
-const NewMonthTemplate = ({ goals, days, isMonthCreated, handleCheckboxChange, classes }) => {
+interface INewProps {
+  days: Array<day>;
+  goals: Array<string>;
+  isMonthCreated: boolean;
+  handleCheckboxChange: (day: number, goal: string) => void;
+}
+
+const NewMonthTemplate: React.FC<INewProps & WithStyles<typeof style>> = ({
+  goals,
+  days,
+  isMonthCreated,
+  handleCheckboxChange,
+  classes,
+}) => {
   return (
     <>
       <div>
@@ -27,13 +41,6 @@ const NewMonthTemplate = ({ goals, days, isMonthCreated, handleCheckboxChange, c
       </div>
     </>
   );
-};
-
-NewMonthTemplate.propTypes = {
-  days: PropTypes.array.isRequired,
-  goals: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isMonthCreated: PropTypes.bool.isRequired,
-  handleCheckboxChange: PropTypes.func.isRequired,
 };
 
 export default withStyles(style)(NewMonthTemplate);

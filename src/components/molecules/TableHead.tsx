@@ -1,10 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
-const TableHeading = ({ firstColumnName, items }) => {
+interface Props {
+  firstColumnName: string,
+  items: Array<string>,
+}
+
+const TableHeading: React.FC<Props> = ({ firstColumnName, items }) => {
   return (
     <TableHead>
       <TableRow>
@@ -15,11 +19,6 @@ const TableHeading = ({ firstColumnName, items }) => {
       </TableRow>
     </TableHead>
   );
-};
-
-TableHeading.propTypes = {
-  firstColumnName: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default TableHeading;

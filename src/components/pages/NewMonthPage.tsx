@@ -1,21 +1,33 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import CreateMonthTemplate from '../templates/CreateMonthTemplate';
 import { createMonth } from '../../modules/month/actions';
 import { getMonth, getMonthCreated } from '../../modules/month/monthReducer';
 import { redirect } from '../../router/history';
+import { IState } from '../../redux/rootReducer';
 
-class NewMonthPage extends Component {
+interface IStateProps {
+  isMonthCreated: boolean;
+}
+
+interface IDispatchProps {
+  createMonth: (goals: Array<string>) => void;
+}
+
+interface IOwnState {
+  goals: Array<string>;
+}
+
+class NewMonthPage extends React.Component<IStateProps & IDispatchProps, IOwnState> {
   state = {
     goals: [],
   };
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps: IStateProps & IDispatchProps, prevState: IOwnState) {
     if (this.props.isMonthCreated) {
       redirect('/');
     }
   }
-
   render() {
     const { createMonth } = this.props;
 
@@ -31,16 +43,16 @@ class NewMonthPage extends Component {
     );
   }
 
-  handleGoalAdd = goal => {
+  handleGoalAdd = (goal: string) => {
     this.setState({ goals: [...this.state.goals, goal] });
   };
 
-  handleDelete = goal => () => {
+  handleDelete = (goal: string) => () => {
     this.setState({ goals: this.state.goals.filter(goalName => goalName !== goal) });
   };
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: IState) => {
   const month = getMonth(state);
 
   return {

@@ -1,8 +1,8 @@
-import React from 'react';
-import moment from 'moment';
+import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { redirect } from '../../router/history';
+const moment = require('moment');
 
 const CreateMonth = () => {
   const handleChange = () => {
@@ -20,3 +20,4 @@ const CreateMonth = () => {
 };
 
 export default CreateMonth;
+
