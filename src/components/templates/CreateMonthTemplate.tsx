@@ -6,11 +6,13 @@ import NewMonthForm from '../organisms/NewMonthForm';
 import GoalsList from '../organisms/GoalsList';
 import Grid from '@material-ui/core/Grid';
 import { WithStyles } from '@material-ui/styles/withStyles';
+import { Typography } from '@material-ui/core';
 const moment = require('moment');
 
 const styles = createStyles({
   root: {
     width: '95%',
+    maxWidth: 600,
     margin: 'auto',
     padding: '5px',
     height: '50vh',
@@ -48,7 +50,7 @@ const CreateMonthTemplate: React.FC<IProps & WithStyles<typeof styles>> = ({
   };
 
   return (
-    <Paper className={classes.root}>
+    <div className={classes.root}>
       <Grid
         container
         direction={'column'}
@@ -56,21 +58,19 @@ const CreateMonthTemplate: React.FC<IProps & WithStyles<typeof styles>> = ({
         justify={'space-evenly'}
         alignItems={'center'}
       >
-        <Grid item>Your goals for {moment().format('MMMM')}</Grid>
+        <Typography variant={'headline'}>Your goals for {moment().format('MMMM')}</Typography>
         <Grid item>
           <GoalsList goals={goals} handleDelete={handleDelete} />
         </Grid>
         <Grid item>
-          <Paper>
-            <NewMonthForm
-              goal={initValues}
-              handleGoalAdd={handleGoalAdd}
-              handleCreateMonth={handleCreateMonth}
-            />
-          </Paper>
+          <NewMonthForm
+            goal={initValues}
+            handleGoalAdd={handleGoalAdd}
+            handleCreateMonth={handleCreateMonth}
+          />
         </Grid>
       </Grid>
-    </Paper>
+    </div>
   );
 };
 

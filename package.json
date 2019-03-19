@@ -17,6 +17,7 @@
     "eslint-plugin-import": "2.x",
     "eslint-plugin-react": "7.x",
     "formik": "^1.5.1",
+    "global": "^4.3.2",
     "history": "^4.7.2",
     "localforage": "^1.7.3",
     "moment": "^2.24.0",

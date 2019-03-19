@@ -6,6 +6,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import { TextField } from '@material-ui/core';
 import { FormikProps } from 'formik';
 import { InitFormValues } from '../templates/CreateMonthTemplate';
+import Grid from '@material-ui/core/Grid';
 
 export interface INewMonthFormProps {
   goal: InitFormValues;
@@ -24,7 +25,7 @@ const NewMonthForm: React.FC<FormikProps<InitFormValues> & INewMonthFormProps> =
 }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <FormControl>
+      <Grid container direction={'column'}>
         <TextField
           error={!!errors.goal && !!touched.goal}
           type={'text'}
@@ -36,18 +37,26 @@ const NewMonthForm: React.FC<FormikProps<InitFormValues> & INewMonthFormProps> =
           variant={'outlined'}
         />
         {errors.goal && touched.goal && <FormHelperText error>{errors.goal}</FormHelperText>}
-      </FormControl>
-      <Button type={'submit'} variant={'contained'} color={'primary'} style={{ marginTop: '10px' }}>
-        Add a goal
-      </Button>
-      <Button
-        variant={'contained'}
-        color={'secondary'}
-        style={{ marginTop: '10px' }}
-        onClick={handleCreateMonth}
-      >
-        Continue
-      </Button>
+        <FormControl />
+        <Button
+          type={'submit'}
+          variant={'contained'}
+          color={'primary'}
+          style={{ marginTop: '10px' }}
+          size={'large'}
+        >
+          Add a goal
+        </Button>
+        <Button
+          variant={'contained'}
+          color={'secondary'}
+          style={{ marginTop: '10px' }}
+          onClick={handleCreateMonth}
+          size={'large'}
+        >
+          Continue
+        </Button>
+      </Grid>
     </form>
   );
 };
