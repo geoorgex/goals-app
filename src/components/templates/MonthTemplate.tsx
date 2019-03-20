@@ -9,8 +9,9 @@ import { WithStyles } from '@material-ui/styles';
 const style = createStyles({
   table: {
     width: '95%',
+    maxWidth: 1200,
     margin: 'auto',
-    marginTop: '100px',
+    marginTop: '50px',
   },
 });
 
@@ -21,7 +22,7 @@ interface INewProps {
   handleCheckboxChange: (day: number, goal: string) => void;
 }
 
-const NewMonthTemplate: React.FC<INewProps & WithStyles<typeof style>> = ({
+const MonthTemplate: React.FC<INewProps & WithStyles<typeof style>> = ({
   goals,
   days,
   isMonthCreated,
@@ -43,4 +44,4 @@ const NewMonthTemplate: React.FC<INewProps & WithStyles<typeof style>> = ({
   );
 };
 
-export default withStyles(style)(NewMonthTemplate);
+export default withStyles(style)(MonthTemplate);

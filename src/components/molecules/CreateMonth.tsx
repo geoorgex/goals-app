@@ -25,7 +25,7 @@ const CreateMonth: React.FC<WithStyles<typeof styles>> = ({ classes }) => {
 
   return (
     <Grid container direction={'column'} alignItems={'center'} className={classes.root}>
-      <Typography variant={'headline'} className={classes.headline}>
+      <Typography variant={'h4'} className={classes.headline}>
         Goals for {moment().format('MMMM')} has not been created
       </Typography>
       <Button color={'primary'} onClick={handleChange} variant={'contained'} size={'large'}>

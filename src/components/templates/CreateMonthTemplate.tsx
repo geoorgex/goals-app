@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Paper from '@material-ui/core/Paper';
 import { createStyles, withStyles } from '@material-ui/styles';
 
 import NewMonthForm from '../organisms/NewMonthForm';
@@ -25,6 +24,7 @@ const styles = createStyles({
 
 interface IProps {
   goals: string[];
+  hasGoals: boolean;
   handleGoalAdd: (goal: string) => void;
   handleDelete: (goal: string) => void;
   createMonth: (goals: string[]) => void;
@@ -36,6 +36,7 @@ export interface InitFormValues {
 
 const CreateMonthTemplate: React.FC<IProps & WithStyles<typeof styles>> = ({
   goals,
+  hasGoals,
   handleGoalAdd,
   handleDelete,
   createMonth,
@@ -65,6 +66,7 @@ const CreateMonthTemplate: React.FC<IProps & WithStyles<typeof styles>> = ({
         <Grid item>
           <NewMonthForm
             goal={initValues}
+            hasGoals={hasGoals}
             handleGoalAdd={handleGoalAdd}
             handleCreateMonth={handleCreateMonth}
           />

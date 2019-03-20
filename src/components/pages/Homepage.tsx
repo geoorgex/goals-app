@@ -8,7 +8,7 @@ import {
   getMonth,
   getMonthCreated,
 } from '../../modules/month/monthReducer';
-import NewMonthTemplate from '../templates/NewMonthTemplate';
+import MonthTemplate from '../templates/MonthTemplate';
 import { handleCheckboxChange } from '../../modules/month/actions';
 import { IState } from '../../redux/rootReducer';
 
@@ -28,7 +28,7 @@ class Homepage extends React.Component<StateProps & DispatchProps> {
 
     return (
       <div>
-        <NewMonthTemplate
+        <MonthTemplate
           days={days}
           goals={goals}
           isMonthCreated={isMonthCreated}

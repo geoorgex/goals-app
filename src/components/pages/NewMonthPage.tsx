@@ -35,6 +35,7 @@ class NewMonthPage extends React.Component<IStateProps & IDispatchProps, IOwnSta
       <div>
         <CreateMonthTemplate
           goals={this.state.goals}
+          hasGoals={this.state.goals.length > 0}
           handleDelete={this.handleDelete}
           handleGoalAdd={this.handleGoalAdd}
           createMonth={createMonth}

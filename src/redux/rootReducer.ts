@@ -1,12 +1,14 @@
 import { combineReducers, Reducer } from 'redux';
-import monthReducer, { MonthState } from '../modules/month/monthReducer';
+import { persistReducer } from 'redux-persist';
+import localforage from 'localforage';
+import monthReducer, { MonthState, persistMonthReducerConfig } from '../modules/month/monthReducer';
 
 export interface IState {
   month: MonthState;
 }
 
-const rootReducer: Reducer<IState> = combineReducers({
-  month: monthReducer,
+const rootReducer: any = combineReducers({
+  month: persistReducer(persistMonthReducerConfig(localforage), monthReducer),
 });
 
 export default rootReducer;

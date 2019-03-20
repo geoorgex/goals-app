@@ -81,9 +81,17 @@ const monthReducer = (state = initialState, action: MonthAction) => {
   }
 };
 
+export const persistMonthReducerConfig = (storage: any) => ({
+  key: 'month',
+  storage,
+  whitelist: ['monthCreated', 'goals', 'days'],
+});
+
 export const getMonth = (state: IState) => state.month;
 export const getDays = (month: MonthState) => month.days;
 export const getGoals = (month: MonthState) => month.goals;
+export const getTodayGoals = (month: MonthState): Day | undefined =>
+  month.days.find(goal => goal.day === Number(moment().format('D')));
 export const getMonthCreated = (month: MonthState) => month.monthCreated;
 
 export default monthReducer;

@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 
 export interface INewMonthFormProps {
   goal: InitFormValues;
+  hasGoals: boolean;
   handleGoalAdd: (goal: string) => void;
   handleCreateMonth: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
@@ -22,21 +23,24 @@ const NewMonthForm: React.FC<FormikProps<InitFormValues> & INewMonthFormProps> =
   handleBlur,
   handleSubmit,
   handleCreateMonth,
+  hasGoals,
 }) => {
   return (
     <form onSubmit={handleSubmit}>
       <Grid container direction={'column'}>
-        <TextField
-          error={!!errors.goal && !!touched.goal}
-          type={'text'}
-          name={'goal'}
-          label={'New goal'}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.goal}
-          variant={'outlined'}
-        />
-        {errors.goal && touched.goal && <FormHelperText error>{errors.goal}</FormHelperText>}
+        <div style={{ height: 80 }}>
+          <TextField
+            error={!!errors.goal && !!touched.goal}
+            type={'text'}
+            name={'goal'}
+            label={'New goal'}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.goal}
+            variant={'outlined'}
+          />
+          {errors.goal && touched.goal && <FormHelperText error>{errors.goal}</FormHelperText>}
+        </div>
         <FormControl />
         <Button
           type={'submit'}
@@ -52,6 +56,7 @@ const NewMonthForm: React.FC<FormikProps<InitFormValues> & INewMonthFormProps> =
           color={'secondary'}
           style={{ marginTop: '10px' }}
           onClick={handleCreateMonth}
+          disabled={!hasGoals}
           size={'large'}
         >
           Continue
